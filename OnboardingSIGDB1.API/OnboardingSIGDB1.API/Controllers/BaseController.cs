@@ -26,7 +26,7 @@ namespace OnboardingSIGDB1.API.Controllers
         #endregion Ctores
 
         #region Dispose
-
+        [NonAction]
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)
@@ -39,6 +39,7 @@ namespace OnboardingSIGDB1.API.Controllers
                 _disposed = true;
             }
         }
+        [NonAction]
         public void Dispose()
         {
             Dispose(true);

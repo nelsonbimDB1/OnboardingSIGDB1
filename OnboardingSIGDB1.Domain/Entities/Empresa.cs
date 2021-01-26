@@ -33,10 +33,10 @@ namespace OnboardingSIGDB1.Domain.Entities
                 .MaximumLength(150).WithMessage("Nome tem tamanho máximo de 150 caracteres.");
 
             RuleFor(x => x.CNPJ)
-                .NotEmpty().WithMessage("CNPJ deve ser preenchido.")
-                .Length(14).WithMessage("CNPJ deve conter 11 caracteres.")
                 .Must(x => ObjectValues.CNPJ.IsValid(x)).When(x => !string.IsNullOrEmpty(x.CNPJ))
-                .WithMessage("CNPJ inválido.");
+                .WithMessage("CNPJ inválido.")
+                .NotEmpty().WithMessage("CNPJ deve ser preenchido.")
+                .Length(14).WithMessage("CNPJ deve conter 11 caracteres.");
 
             RuleFor(x => x.DataFundacao)
                 .GreaterThanOrEqualTo(DateTime.MinValue).When(x => x.DataFundacao.HasValue)

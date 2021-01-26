@@ -41,7 +41,32 @@ namespace OnboardingSIGDB1.Data.Repositories
 
         public List<FuncionarioQueryResult> Get()
         {
-            var funcionarios = _context.Funcionarios.ToList();
+            var funcionarios = _context.Funcionarios.Include(p => p.FuncionariosCargos).ThenInclude(p => p.Cargo).Include(p => p.Empresa).ToList();
+
+            var funcionariosQueryResult = funcionarios.Select(p => new FuncionarioQueryResult
+            {
+                Id = p.Id,
+                Nome = p.Nome,
+                CPF = p.CPF,
+                DataContratacao = p.DataContratacao,
+                Cargo = p.FuncionariosCargos?.OrderByDescending(d => d.DataVinculo).FirstOrDefault() == null ? null : new CargoFuncionarioQueryResult
+                {
+                    Id = p.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault().CargoId,
+                    Descricao = p.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault().Cargo.Descricao,
+                    DataVinculo = p.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault().DataVinculo
+                }
+            }).ToList();
+
+            return funcionariosQueryResult;
+        }
+
+        public List<FuncionarioQueryResult> GetByFiltro(FuncionarioFilter filter)
+        {
+            var funcionarios = _context.Funcionarios.Include(p => p.FuncionariosCargos).ThenInclude(p => p.Cargo).Include(p => p.Empresa)
+                                                .Where(p => (string.IsNullOrEmpty(filter.Nome) || p.Nome.Contains(filter.Nome)) &&
+                                                            (string.IsNullOrEmpty(filter.CPF) || p.CPF == filter.CPF) &&
+                                                            filter.DataContratacaoInicio == null && filter.DataContratacaoFim == null ||
+                                                            p.DataContratacao >= filter.DataContratacaoInicio && p.DataContratacao <= filter.DataContratacaoFim).ToList();
 
             var funcionariosQueryResult = funcionarios.Select(p => new FuncionarioQueryResult
             {
@@ -60,26 +85,22 @@ namespace OnboardingSIGDB1.Data.Repositories
             return funcionariosQueryResult;
         }
 
-        public List<FuncionarioQueryResult> GetByFiltro(FuncionarioFilter filter)
+        public FuncionarioQueryResult GetByIdCargo(int id)
         {
-            var funcionarios = _context.Funcionarios.Where(p => string.IsNullOrEmpty(filter.Nome) || p.Nome.Contains(filter.Nome) &&
-                                                string.IsNullOrEmpty(filter.CPF) || p.CPF == filter.CPF &&
-                                                (!filter.DataContratacaoInicio.HasValue && !filter.DataContratacaoFim.HasValue) ||
-                                                p.DataContratacao >= filter.DataContratacaoInicio.Value && p.DataContratacao <= filter.DataContratacaoInicio.Value).ToList();
-
-            var funcionariosQueryResult = funcionarios.Select(p => new FuncionarioQueryResult
+            var funcionario = _context.Funcionarios.Include(p => p.FuncionariosCargos).ThenInclude(p => p.Cargo).Include(p => p.Empresa).Where(p => p.Id == id).FirstOrDefault();
+            var funcionariosQueryResult = new FuncionarioQueryResult
             {
-                Id = p.Id,
-                Nome = p.Nome,
-                CPF = p.CPF,
-                DataContratacao = p.DataContratacao,
-                Cargo = p.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault() == null ? null : new CargoFuncionarioQueryResult
+                Id = funcionario.Id,
+                Nome = funcionario.Nome,
+                CPF = funcionario.CPF,
+                DataContratacao = funcionario.DataContratacao,
+                Cargo = funcionario.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault() == null ? null : new CargoFuncionarioQueryResult
                 {
-                    Id = p.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault().CargoId,
-                    Descricao = p.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault().Cargo.Descricao,
-                    DataVinculo = p.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault().DataVinculo
+                    Id = funcionario.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault().CargoId,
+                    Descricao = funcionario.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault().Cargo.Descricao,
+                    DataVinculo = funcionario.FuncionariosCargos.OrderByDescending(d => d.DataVinculo).FirstOrDefault().DataVinculo
                 }
-            }).ToList();
+            };
 
             return funcionariosQueryResult;
         }

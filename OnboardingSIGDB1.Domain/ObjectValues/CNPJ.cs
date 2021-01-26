@@ -43,7 +43,7 @@
         public static string RemoveMask(string cnpj)
         {
             if (string.IsNullOrEmpty(cnpj))
-                return cnpj;
+                return null;
 
             return cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
         }

@@ -16,7 +16,7 @@ namespace OnboardingSIGDB1.Domain.Entities
         public Funcionario(string nome, string cpf, DateTime? dataContratacao)
         {
             Nome = nome;
-            CPF = cpf;
+            CPF = ObjectValues.CPF.RemoveMask(cpf);
             DataContratacao = dataContratacao;
         }
 
@@ -29,7 +29,7 @@ namespace OnboardingSIGDB1.Domain.Entities
 
         public void AlteraCPF(string cpf)
         {
-            CPF = cpf;
+            CPF = ObjectValues.CPF.RemoveMask(cpf);
         }
 
         public void VinculaEmpresa(int empresaId)
@@ -57,10 +57,10 @@ namespace OnboardingSIGDB1.Domain.Entities
                 .MaximumLength(150).WithMessage("Nome tem tamanho máximo de 150 caracteres.");
 
             RuleFor(x => x.CPF)
-                .NotEmpty().WithMessage("CPF deve ser preenchido.")
-                .Length(11).WithMessage("CPF deve conter 11 caracteres.")
                 .Must(x => ObjectValues.CPF.IsValid(x)).When(x => !string.IsNullOrEmpty(x.CPF))
-                .WithMessage("CPF inválido.");
+                .WithMessage("CPF inválido.")
+                .NotEmpty().WithMessage("CPF deve ser preenchido.")
+                .Length(11).WithMessage("CPF deve conter 11 caracteres.");
 
             RuleFor(x => x.DataContratacao)
                 .GreaterThanOrEqualTo(DateTime.MinValue).When(x => x.DataContratacao.HasValue)

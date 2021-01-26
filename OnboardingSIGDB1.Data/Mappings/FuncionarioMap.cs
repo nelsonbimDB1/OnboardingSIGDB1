@@ -32,6 +32,11 @@ namespace OnboardingSIGDB1.Data.Mappings
                    .WithOne(prop => prop.Funcionario)
                    .HasForeignKey(prop => prop.FuncionarioId)
                    .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(prop => prop.Empresa)
+                   .WithMany(prop => prop.Funcionarios)
+                   .HasForeignKey(prop => prop.EmpresaId)
+                   .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

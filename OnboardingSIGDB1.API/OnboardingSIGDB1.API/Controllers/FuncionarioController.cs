@@ -52,7 +52,7 @@ namespace OnboardingSIGDB1.API.Controllers
                 return BadRequest();
             }
 
-            return Response(_mapper.Map<FuncionarioQueryResult>(_repository.GetById(id)));
+            return Response(_repository.GetByIdCargo(id));
         }
 
         [HttpPost]

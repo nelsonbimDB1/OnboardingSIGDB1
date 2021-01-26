@@ -5,6 +5,7 @@ C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.API\OnboardingSIGDB1.API\bin\Debug
 C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.API\OnboardingSIGDB1.API\bin\Debug\netcoreapp2.2\OnboardingSIGDB1.API.runtimeconfig.dev.json
 C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.API\OnboardingSIGDB1.API\bin\Debug\netcoreapp2.2\OnboardingSIGDB1.API.dll
 C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.API\OnboardingSIGDB1.API\bin\Debug\netcoreapp2.2\OnboardingSIGDB1.API.pdb
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.API\OnboardingSIGDB1.API\bin\Debug\netcoreapp2.2\OnboardingSIGDB1.API.xml
 C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.API\OnboardingSIGDB1.API\bin\Debug\netcoreapp2.2\OnboardingSIGDB1.CrossCutting.IoC.dll
 C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.API\OnboardingSIGDB1.API\bin\Debug\netcoreapp2.2\OnboardingSIGDB1.Data.dll
 C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.API\OnboardingSIGDB1.API\bin\Debug\netcoreapp2.2\OnboardingSIGDB1.Domain.dll

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FluentValidation;
 
 namespace OnboardingSIGDB1.Domain.Entities
@@ -18,6 +19,11 @@ namespace OnboardingSIGDB1.Domain.Entities
         public void AlteraDescricao(string descricao)
         {
             Descricao = descricao;
+        }
+
+        public void InsereFuncionarioCargo(int funcionarioId)
+        {
+            FuncionariosCargos.Add(new FuncionarioCargo(funcionarioId, Id, DateTime.Now));
         }
 
         public override void DefineRules()

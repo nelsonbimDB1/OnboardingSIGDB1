@@ -16,6 +16,7 @@ using OnboardingSIGDB1.CrossCutting.IoC;
 using OnboardingSIGDB1.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using OnboardingSIGDB1.Domain.Notification;
+using Microsoft.OpenApi.Models;
 
 namespace OnboardingSIGDB1.API
 {
@@ -40,13 +41,29 @@ namespace OnboardingSIGDB1.API
                    .AddFluentValidation(fvc =>
                                fvc.RegisterValidatorsFromAssemblyContaining<Startup>())
                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Swagger API",
+                    Version = "v1",
+                    Description = "OnboardingSIGDB1"
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("v1/swagger.json", "MyAPI V1");
+                });
             }
             else
             {
