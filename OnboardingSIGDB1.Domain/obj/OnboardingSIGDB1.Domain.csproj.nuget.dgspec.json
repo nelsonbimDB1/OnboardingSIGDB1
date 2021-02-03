@@ -13,6 +13,9 @@
         "packagesPath": "C:\\Users\\nelson.sebastiani\\.nuget\\packages\\",
         "outputPath": "C:\\Projects\\OnboardingSIGDB1\\OnboardingSIGDB1.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\nelson.sebastiani\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

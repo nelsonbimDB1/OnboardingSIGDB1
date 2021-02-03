@@ -6,3 +6,4 @@ C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.Domain\obj\Debug\netcoreapp2.2\Onb
 C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.Domain\obj\Debug\netcoreapp2.2\OnboardingSIGDB1.Domain.csproj.CoreCompileInputs.cache
 C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.Domain\obj\Debug\netcoreapp2.2\OnboardingSIGDB1.Domain.dll
 C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.Domain\obj\Debug\netcoreapp2.2\OnboardingSIGDB1.Domain.pdb
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.Domain\obj\Debug\netcoreapp2.2\OnboardingSIGDB1.Domain.csprojAssemblyReference.cache

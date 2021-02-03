@@ -1,6 +1,7 @@
 ﻿using OnboardingSIGDB1.Domain.Entities;
 using OnboardingSIGDB1.Domain.Interfaces.Notification;
 using OnboardingSIGDB1.Domain.Interfaces.UoW;
+using OnboardingSIGDB1.Domain.Notification;
 using System;
 
 namespace OnboardingSIGDB1.Domain.Services
@@ -39,7 +40,7 @@ namespace OnboardingSIGDB1.Domain.Services
         public void Manipulate(TEntity entity, Action<TEntity> action)
         {
             entity.DefineRules();
-            entity.AddValidationResult(entity);
+            AddValidationResult(entity);
 
             if (entity.ValidationResult.Count > 0)
             {
@@ -49,6 +50,17 @@ namespace OnboardingSIGDB1.Domain.Services
 
             action(entity);
             _UoW.Commit();
+        }
+
+        private void AddValidationResult(TEntity entity)
+        {
+            var results = entity.Validate(entity);
+            foreach (var item in results.Errors)
+            {
+                var propertyName = !string.IsNullOrEmpty(item.PropertyName) ? $"{item.PropertyName}" : null;
+
+                entity.ValidationResult.Add(new DomainNotification($"{propertyName}", item.ErrorMessage));
+            }
         }
     }
 }

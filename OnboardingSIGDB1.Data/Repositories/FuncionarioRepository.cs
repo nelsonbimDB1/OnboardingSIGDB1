@@ -130,17 +130,12 @@ namespace OnboardingSIGDB1.Data.Repositories
 
         public void AddCargo(Funcionario funcionario, int cargoId)
         {
-            funcionario.VinculaCargo(cargoId);
             _context.Entry(funcionario).State = EntityState.Modified;
 
             var funcionarioCargo = funcionario.FuncionariosCargos.Find(p => p.CargoId == cargoId);
             _context.Entry(funcionarioCargo).State = EntityState.Added;
         }
 
-        public void AddEmpresa(Funcionario funcionario, int empresaId)
-        {
-            funcionario.VinculaEmpresa(empresaId);
-            _context.Entry(funcionario).State = EntityState.Modified;
-        }
+        public void AddEmpresa(Funcionario funcionario, int empresaId) => _context.Entry(funcionario).State = EntityState.Modified;
     }
 }

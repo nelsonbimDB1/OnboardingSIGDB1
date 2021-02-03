@@ -44,17 +44,11 @@ namespace OnboardingSIGDB1.Data.Repositories
 
         public Cargo GetById(int id) => _context.Cargos.Include(p => p.FuncionariosCargos).Where(p => p.Id == id).FirstOrDefault();
 
-        public void Add(Cargo cargo)
-        {
-            _context.Cargos.Add(cargo);
-        }
+        public void Add(Cargo cargo) => _context.Cargos.Add(cargo);
 
         public void Remove(int id) =>
             _context.Cargos.Remove(_context.Cargos.FirstOrDefault(c => c.Id == id));
 
-        public void Update(Cargo cargo)
-        {
-            _context.Entry(cargo).State = EntityState.Modified;
-        }
+        public void Update(Cargo cargo) => _context.Entry(cargo).State = EntityState.Modified;
     }
 }

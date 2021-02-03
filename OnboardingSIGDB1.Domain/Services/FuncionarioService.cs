@@ -45,12 +45,13 @@ namespace OnboardingSIGDB1.Domain.Services
         {            
             var funcionario = _repository.GetById(funcionarioId);
 
-            if (empresaId == 0 && funcionario?.EmpresaId == null)
+            if (empresaId == 0 && funcionario?.EmpresaId != null)
             {
                 Notification.Adicionar("O funcionário não pode se desvincular de uma empresa.");
                 return;
             }
 
+            funcionario.VinculaEmpresa(empresaId);
             _repository.AddEmpresa(funcionario, empresaId);
             _UoW.Commit();
         }
@@ -70,7 +71,8 @@ namespace OnboardingSIGDB1.Domain.Services
                 return;
             }
 
-            _repository.AddCargo(funcionario, cargoId);
+            funcionario.VinculaCargo(cargoId);
+            //_repository.AddCargo(funcionario, cargoId);
             _UoW.Commit();
         }
     }
