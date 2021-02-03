@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace OnboardingSIGDB1.Data.UoW
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : ScopedDataRegister, IUnitOfWork
     {
         private readonly SIGContext _context;
         private IDbContextTransaction _transaction;

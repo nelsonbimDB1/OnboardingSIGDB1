@@ -4,8 +4,7 @@ using OnboardingSIGDB1.Domain.DTOs;
 using OnboardingSIGDB1.Domain.Filters;
 using OnboardingSIGDB1.Domain.Interfaces.Notification;
 using OnboardingSIGDB1.Domain.Interfaces.Repositories;
-using OnboardingSIGDB1.Domain.Interfaces.Services;
-using OnboardingSIGDB1.Domain.QueryResults;
+using OnboardingSIGDB1.Domain.Interfaces.Services.Funcionario;
 
 namespace OnboardingSIGDB1.API.Controllers
 {
@@ -14,12 +13,14 @@ namespace OnboardingSIGDB1.API.Controllers
     public class FuncionarioController : BaseController
     {
         private readonly IFuncionarioRepository _repository;
-        private readonly IFuncionarioService _service;
-        
-        public FuncionarioController(IDomainNotificationHandler notification, IFuncionarioRepository repository, IFuncionarioService service, IMapper mapper) : base(notification, mapper)
+        private readonly IArmazenadorFuncionario _armazenador;
+        private readonly IRemocaoFuncionario _remocao;
+
+        public FuncionarioController(IDomainNotificationHandler notification, IFuncionarioRepository repository, IArmazenadorFuncionario armazenador, IRemocaoFuncionario remocao, IMapper mapper) : base(notification, mapper)
         {
             _repository = repository;
-            _service = service;
+            _armazenador = armazenador;
+            _remocao = remocao;
         }
 
         [HttpGet]
@@ -58,7 +59,7 @@ namespace OnboardingSIGDB1.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] FuncionarioDTO dto)
         {
-            _service.Add(dto);
+            _armazenador.Add(dto);
 
             return Response();
         }
@@ -72,7 +73,7 @@ namespace OnboardingSIGDB1.API.Controllers
                 return BadRequest();
             }
 
-            _service.Update(dto);
+            _armazenador.Update(dto);
 
             return Response();
         }
@@ -86,7 +87,7 @@ namespace OnboardingSIGDB1.API.Controllers
                 return BadRequest();
             }
 
-            _service.AddEmpresa(id, empresaId);
+            _armazenador.AddEmpresa(id, empresaId);
 
             return Response();
         }
@@ -100,7 +101,7 @@ namespace OnboardingSIGDB1.API.Controllers
                 return BadRequest();
             }
 
-            _service.AddCargo(id, cargoId);
+            _armazenador.AddCargo(id, cargoId);
 
             return Response();
         }
@@ -114,7 +115,7 @@ namespace OnboardingSIGDB1.API.Controllers
                 return BadRequest();
             }
 
-            _service.Remove(id);
+            _remocao.Remove(id);
 
             return Response();
         }

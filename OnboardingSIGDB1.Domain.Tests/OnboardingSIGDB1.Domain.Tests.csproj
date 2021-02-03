@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\OnboardingSIGDB1.Domain\OnboardingSIGDB1.Domain.csproj" />
+    <ProjectReference Include="..\OnboardingSIGDB1.Domain\OnboardingSIGDB1.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -32,8 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\OnboardingSIGDB1.CrossCutting.IoC\OnboardingSIGDB1.CrossCutting.IoC.csproj" />
-    <ProjectReference Include="..\..\OnboardingSIGDB1.Data\OnboardingSIGDB1.Data.csproj" />
+    <ProjectReference Include="..\OnboardingSIGDB1.CrossCutting.IoC\OnboardingSIGDB1.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\OnboardingSIGDB1.Data\OnboardingSIGDB1.Data.csproj" />
   </ItemGroup>
 
 </Project>

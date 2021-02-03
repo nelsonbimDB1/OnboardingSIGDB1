@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace OnboardingSIGDB1.Data.Repositories
 {
-    public class FuncionarioRepository : IFuncionarioRepository
+    public class FuncionarioRepository : ScopedDataRegister, IFuncionarioRepository
     {
         private readonly SIGContext _context;
         private bool _disposed;

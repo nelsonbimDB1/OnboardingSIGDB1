@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace OnboardingSIGDB1.Data.Repositories
 {
-    public class CargoRepository : ICargoRepository
+    public class CargoRepository : ScopedDataRegister, ICargoRepository
     {
         private readonly SIGContext _context;
         private readonly IMapper _mapper;

@@ -2,15 +2,15 @@
 using OnboardingSIGDB1.Domain.Entities;
 using OnboardingSIGDB1.Domain.Interfaces.Notification;
 using OnboardingSIGDB1.Domain.Interfaces.Repositories;
-using OnboardingSIGDB1.Domain.Interfaces.Services;
+using OnboardingSIGDB1.Domain.Interfaces.Services.Empresa;
 using OnboardingSIGDB1.Domain.Interfaces.UoW;
 
 namespace OnboardingSIGDB1.Domain.Services
 {
-    public class EmpresaService : BaseService<int, Empresa>, IEmpresaService
+    public class ArmazenadorEmpresa : BaseService<int, Empresa>, IArmazenadorEmpresa
     {
         private readonly IEmpresaRepository _repository;
-        public EmpresaService(IDomainNotificationHandler notification, IUnitOfWork UoW, IEmpresaRepository repository) : base(notification, UoW) 
+        public ArmazenadorEmpresa(IDomainNotificationHandler notification, IUnitOfWork UoW, IEmpresaRepository repository) : base(notification, UoW) 
         {
             _repository = repository;
         }
@@ -37,21 +37,6 @@ namespace OnboardingSIGDB1.Domain.Services
             empresa.AlteraDataFundacao(empresadto.DataFundacao);
 
             Manipulate(empresa, _repository.Update);
-        }
-
-        public void Remove(int empresaId)
-        {
-            var cargo = _repository.GetById(empresaId);
-            if (cargo?.Funcionarios?.Count > 0)
-            {
-                Notification.Adicionar("Não foi possível remover a empresa, pois a mesma possui vínculos com funcionários ativos no sistema.");
-                return;
-            }
-            else
-            {
-                _repository.Remove(empresaId);
-                _UoW.Commit();
-            }
         }
     }
 }

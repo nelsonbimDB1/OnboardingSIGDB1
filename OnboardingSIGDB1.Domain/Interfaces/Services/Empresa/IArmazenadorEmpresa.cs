@@ -1,14 +1,12 @@
 ﻿using OnboardingSIGDB1.Domain.DTOs;
 using System;
 
-namespace OnboardingSIGDB1.Domain.Interfaces.Services
+namespace OnboardingSIGDB1.Domain.Interfaces.Services.Empresa
 {
-    public interface IEmpresaService : IDisposable
+    public interface IArmazenadorEmpresa : IDisposable
     {
         void Add(EmpresaDTO empresa);
 
         void Update(EmpresaDTO empresa);
-
-        void Remove(int empresaId);
     }
 }

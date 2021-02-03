@@ -1,7 +1,4 @@
-﻿using OnboardingSIGDB1.Domain.Interfaces.Notification;
-using OnboardingSIGDB1.Domain.Interfaces.Services;
-using Xunit;
-using Moq;
+﻿using Xunit;
 using System.Linq;
 using OnboardingSIGDB1.Domain.Entities;
 using OnboardingSIGDB1.Domain.Notification;
@@ -11,14 +8,8 @@ namespace OnboardingSIGDB1.Domain.Tests
     public class CargoTests
     {
 
-        private readonly Mock<IDomainNotificationHandler> _notification;
-        private readonly Mock<ICargoService> _service;
-
         public CargoTests()
-        {
-            _notification = new Mock<IDomainNotificationHandler>();
-            _service = new Mock<ICargoService>();
-        }
+        { }
 
         [Fact]
         public void VerificaDescricaoPreenchida()

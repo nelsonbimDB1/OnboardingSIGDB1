@@ -1,14 +1,12 @@
 ﻿using OnboardingSIGDB1.Domain.DTOs;
 using System;
 
-namespace OnboardingSIGDB1.Domain.Interfaces.Services
+namespace OnboardingSIGDB1.Domain.Interfaces.Services.Cargo
 {
-    public interface ICargoService : IDisposable
+    public interface IArmazenadorCargo : IDisposable
     {
         void Add(CargoDTO cargo);
 
         void Update(CargoDTO cargo);
-
-        void Remove(int cargoId);
     }
 }

@@ -1,0 +1,9 @@
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.CrossCutting.Helpers\bin\Debug\netcoreapp2.2\OnboardingSIGDB1.CrossCutting.Helpers.deps.json
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.CrossCutting.Helpers\bin\Debug\netcoreapp2.2\OnboardingSIGDB1.CrossCutting.Helpers.dll
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.CrossCutting.Helpers\bin\Debug\netcoreapp2.2\OnboardingSIGDB1.CrossCutting.Helpers.pdb
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.CrossCutting.Helpers\obj\Debug\netcoreapp2.2\OnboardingSIGDB1.CrossCutting.Helpers.AssemblyInfoInputs.cache
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.CrossCutting.Helpers\obj\Debug\netcoreapp2.2\OnboardingSIGDB1.CrossCutting.Helpers.AssemblyInfo.cs
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.CrossCutting.Helpers\obj\Debug\netcoreapp2.2\OnboardingSIGDB1.CrossCutting.Helpers.csproj.CoreCompileInputs.cache
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.CrossCutting.Helpers\obj\Debug\netcoreapp2.2\OnboardingSIGDB1.CrossCutting.Helpers.dll
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.CrossCutting.Helpers\obj\Debug\netcoreapp2.2\OnboardingSIGDB1.CrossCutting.Helpers.pdb
+C:\Projects\OnboardingSIGDB1\OnboardingSIGDB1.CrossCutting.Helpers\obj\Debug\netcoreapp2.2\OnboardingSIGDB1.CrossCutting.Helpers.csprojAssemblyReference.cache

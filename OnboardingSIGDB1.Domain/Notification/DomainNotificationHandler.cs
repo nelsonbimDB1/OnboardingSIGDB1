@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace OnboardingSIGDB1.Domain.Notification
 {
-    public class DomainNotificationHandler : IDomainNotificationHandler
+    public class DomainNotificationHandler : ScopedDomainRegister, IDomainNotificationHandler
     {
         private readonly List<DomainNotification> _notifications;
 

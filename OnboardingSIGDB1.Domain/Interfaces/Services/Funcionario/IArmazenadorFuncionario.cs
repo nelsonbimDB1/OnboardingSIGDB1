@@ -1,15 +1,13 @@
 ﻿using OnboardingSIGDB1.Domain.DTOs;
 using System;
 
-namespace OnboardingSIGDB1.Domain.Interfaces.Services
+namespace OnboardingSIGDB1.Domain.Interfaces.Services.Funcionario
 {
-    public interface IFuncionarioService : IDisposable
+    public interface IArmazenadorFuncionario : IDisposable
     {
         void Add(FuncionarioDTO funcionario);
 
         void Update(FuncionarioDTO funcionario);
-
-        void Remove(int funcionarioId);
 
         void AddCargo(int funcionarioId, int cargoId);
 

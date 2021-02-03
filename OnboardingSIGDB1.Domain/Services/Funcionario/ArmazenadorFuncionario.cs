@@ -2,16 +2,16 @@
 using OnboardingSIGDB1.Domain.Entities;
 using OnboardingSIGDB1.Domain.Interfaces.Notification;
 using OnboardingSIGDB1.Domain.Interfaces.Repositories;
-using OnboardingSIGDB1.Domain.Interfaces.Services;
+using OnboardingSIGDB1.Domain.Interfaces.Services.Funcionario;
 using OnboardingSIGDB1.Domain.Interfaces.UoW;
 using System.Linq;
 
 namespace OnboardingSIGDB1.Domain.Services
 {
-    public class FuncionarioService : BaseService<int, Funcionario>, IFuncionarioService
+    public class ArmazenadorFuncionario : BaseService<int, Funcionario>, IArmazenadorFuncionario
     {
         private readonly IFuncionarioRepository _repository;
-        public FuncionarioService(IDomainNotificationHandler notification, IUnitOfWork UoW, IFuncionarioRepository repository) : base(notification, UoW) 
+        public ArmazenadorFuncionario(IDomainNotificationHandler notification, IUnitOfWork UoW, IFuncionarioRepository repository) : base(notification, UoW) 
         {
             _repository = repository;
         }
@@ -35,12 +35,6 @@ namespace OnboardingSIGDB1.Domain.Services
             Manipulate(funcionario, _repository.Update);
         }
 
-        public void Remove(int funcionarioId)
-        {
-            _repository.Remove(funcionarioId);
-            _UoW.Commit();
-        }
-
         public void AddEmpresa(int funcionarioId, int empresaId)
         {            
             var funcionario = _repository.GetById(funcionarioId);
@@ -52,7 +46,6 @@ namespace OnboardingSIGDB1.Domain.Services
             }
 
             funcionario.VinculaEmpresa(empresaId);
-            _repository.AddEmpresa(funcionario, empresaId);
             _UoW.Commit();
         }
 
@@ -72,7 +65,6 @@ namespace OnboardingSIGDB1.Domain.Services
             }
 
             funcionario.VinculaCargo(cargoId);
-            //_repository.AddCargo(funcionario, cargoId);
             _UoW.Commit();
         }
     }

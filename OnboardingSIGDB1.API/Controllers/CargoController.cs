@@ -4,6 +4,7 @@ using OnboardingSIGDB1.Domain.DTOs;
 using OnboardingSIGDB1.Domain.Interfaces.Notification;
 using OnboardingSIGDB1.Domain.Interfaces.Repositories;
 using OnboardingSIGDB1.Domain.Interfaces.Services;
+using OnboardingSIGDB1.Domain.Interfaces.Services.Cargo;
 using OnboardingSIGDB1.Domain.QueryResults;
 
 namespace OnboardingSIGDB1.API.Controllers
@@ -13,12 +14,14 @@ namespace OnboardingSIGDB1.API.Controllers
     public class CargoController : BaseController
     {
         private readonly ICargoRepository _repository;
-        private readonly ICargoService _service;
-        
-        public CargoController(IDomainNotificationHandler notification, ICargoRepository repository, ICargoService service, IMapper mapper) : base(notification, mapper)
+        private readonly IArmazenadorCargo _armazenador;
+        private readonly IRemocaoCargo _remocao;
+
+        public CargoController(IDomainNotificationHandler notification, ICargoRepository repository, IArmazenadorCargo armazenador, IRemocaoCargo remocao, IMapper mapper) : base(notification, mapper)
         {
             _repository = repository;
-            _service = service;
+            _armazenador = armazenador;
+            _remocao = remocao;
         }
 
         [HttpGet]
@@ -42,7 +45,7 @@ namespace OnboardingSIGDB1.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] CargoDTO dto)
         {
-            _service.Add(dto);
+            _armazenador.Add(dto);
 
             return Response();
         }
@@ -56,7 +59,7 @@ namespace OnboardingSIGDB1.API.Controllers
                 return BadRequest();
             }
 
-            _service.Update(dto);
+            _armazenador.Update(dto);
 
             return Response();
         }
@@ -70,7 +73,7 @@ namespace OnboardingSIGDB1.API.Controllers
                 return BadRequest();
             }
 
-            _service.Remove(id);
+            _remocao.Remove(id);
 
             return Response();
         }

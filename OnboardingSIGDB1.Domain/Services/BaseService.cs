@@ -6,7 +6,7 @@ using System;
 
 namespace OnboardingSIGDB1.Domain.Services
 {
-    public class BaseService<TKey, TEntity> where TEntity : BaseEntity<TKey, TEntity>
+    public class BaseService<TKey, TEntity>  where TEntity : BaseEntity<TKey, TEntity>
     {   
         private bool _disposed;
         protected readonly IDomainNotificationHandler Notification;

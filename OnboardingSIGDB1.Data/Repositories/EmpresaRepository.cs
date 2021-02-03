@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace OnboardingSIGDB1.Data.Repositories
 {
-    public class EmpresaRepository : IEmpresaRepository
+    public class EmpresaRepository : ScopedDataRegister, IEmpresaRepository
     {
         private readonly SIGContext _context;
         private readonly IMapper _mapper;

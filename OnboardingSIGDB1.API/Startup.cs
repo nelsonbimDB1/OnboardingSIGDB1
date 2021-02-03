@@ -35,7 +35,8 @@ namespace OnboardingSIGDB1.API
             var connection = Configuration.GetConnectionString("SIGDB1");
             services.AddDbContext<SIGContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("OnboardingSIGDB1.API")));
             services.AddMemoryCache();
-            ConfigurationIOC.LoadServices(services);
+            ConfigurationIOC.LoadDomainServices(services);
+            ConfigurationIOC.LoadDataServices(services);
             AutoMapperConfiguraction.Config(services);
             services.AddMvc()
                    .AddFluentValidation(fvc =>
